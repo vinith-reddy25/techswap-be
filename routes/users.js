@@ -18,13 +18,11 @@ router.get("/", function (req, res, next) {
 router.post("/register", function (req, res, next) {
   const { Institute, Name, Mobile, Department, Date, State } = req.body;
   const user = new User();
-  user.Name = Name;
-  user.Institute = Institute;
-  user.Mobile = Mobile;
-  user.Department = Department;
-  user.State = State;
-  user.Date = Date;
-  console.log("user", user);
+  for (var key in req.body) {
+    console.log("key and values", key, req.body[key]);
+    user[key] = req.body[key];
+  }
+  console.log("the user", user);
   user
     .save()
     .then((result) => {

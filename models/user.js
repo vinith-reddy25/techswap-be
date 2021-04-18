@@ -17,7 +17,6 @@ var UserSchema = new schema({
     default: null,
     required: true,
     unique: true,
-    index: true,
   },
   Department: {
     type: String,
